@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saudação</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Saudação</h1>
+    <label for="name">Seu nome:</label>
+    <input id="name" type="text" placeholder="Digite seu nome" />
+    <button id="btn">Dizer olá</button>
+    <p id="result" class="result" aria-live="polite"></p>
+  </main>
+
+  <script src="script.js"></script>
+  <script>
+    const input = document.getElementById('name');
+    const btn = document.getElementById('btn');
+    const result = document.getElementById('result');
+
+    btn.addEventListener('click', () => {
+      result.textContent = greet(input.value);
+    });
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        result.textContent = greet(input.value);
+      }
+    });
+  </script>
+</body>
+</html>
