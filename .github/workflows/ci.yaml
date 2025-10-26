@@ -2,9 +2,10 @@ name: CI
 
 on:
   push:
-    branches: [ "main", "develop" ]
+    branches: ["**"]
   pull_request:
-    branches: [ "main", "develop" ]
+    branches: ["**"]
+  workflow_dispatch:
 
 jobs:
   build-and-test:
@@ -17,11 +18,13 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          check-latest: true
+
+      - name: Verify Node.js version
+        run: node -v
 
       - name: Install dependencies (none required)
-        run: |
-          echo "No dependencies to install"
+        run: echo "No dependencies to install"
 
       - name: Run tests
-        run: |
-          node tests/test_greet.js
+        run: node tests/test_greet.js
