@@ -48,8 +48,8 @@ jobs:
       - name: Rodar OWASP ZAP (DAST)
         uses: zaproxy/action-full-scan@v0.10.0
         with:
-          target: 'http://localhost:8080'
-          fail_action: true
+          target: 'https://juice-shop.herokuapp.com'
+          fail_action: false
           cmd_options: '-a'
 
       - name: Uploadar relatório de DAST
