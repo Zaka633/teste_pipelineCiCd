@@ -20,15 +20,13 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v4
 
-     
       - name: Inicializa CodeQL
         uses: github/codeql-action/init@v3
         with:
-          languages: javascript
+          languages: javascript  
 
       - name: Analisar com CodeQL
         uses: github/codeql-action/analyze@v3
-
 
   dast:
     name: Dynamic Application Security Testing (DAST)
@@ -36,15 +34,6 @@ jobs:
     needs: sast 
 
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v4
-
-      - name: Configurar e subir app (exemplo)
-        run: |
-          docker build -t myapp .
-          docker run -d -p 8080:8080 myapp
-          sleep 10
-
       - name: Rodar OWASP ZAP (DAST)
         uses: zaproxy/action-full-scan@v0.10.0
         with:
